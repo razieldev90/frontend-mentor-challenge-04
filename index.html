@@ -3,20 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <link rel="stylesheet" href="./css/style.css">
   <title>Frontend Mentor | Social Media Dashboard with Theme Switcher</title>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
 </head>
 <body>
 
-  <div class="grid">
+  <div class="wrapper">
 
     <header class="header">
       <div>
@@ -30,7 +23,7 @@
     </header>
 
 
-    <section id="summary">
+    <div class="summary">
 
       <div class="card card--facebook">
         <div class="card__header">
@@ -80,10 +73,10 @@
         <div class="card__footer down">144 Today</div>
       </div>
 
-    </section>
+    </div>
     
-    <section class="overview">
-      <h2 class="overview__title">Overview Today</h2>
+    <div class="overview">
+      <h2 class="overview__title">Overview - Today</h2>
 
       <div class="card">
         <div class="card__header">
@@ -173,14 +166,14 @@
         </div>
       </div>
 
-    </section>
+    </div>
 
   </div>
 
   
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
+    Coded by <a href="#">Razieldev</a>.
   </div>
 
   <script src="./js/script.js"></script>
