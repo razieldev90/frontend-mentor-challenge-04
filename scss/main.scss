@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+$ff: 'Inter', sans-serif;
+
+$variables: (
+  'lime-green': hsl(163, 72%, 41%),
+  'bright-red': hsl(356, 69%, 56%),
+  'facebook': hsl(195, 100%, 50%),
+  'twitter': hsl(203, 89%, 53%),
+  'instagram': linear-gradient(hsl(37, 97%, 70%), hsl(329, 70%, 58%)),
+  'youtube': hsl(348, 97%, 39%),
+  'dark-blue-bg': hsl(230, 17%, 14%),
+  'dark-blue-top': hsl(232, 19%, 15%),
+  'dark-desaturated-blue': hsl(228, 28%, 20%),
+  'desaturated-blue': hsl(228, 34%, 66%),
+  'white': hsl(0, 0%, 100%),
+  'pale-blue-top-bg': hsl(225, 100%, 98%),
+  'light-graysh-blue': hsl(227, 47%, 96%),
+  'dark-graysh-blue': hsl(228, 12%, 44%),
+  'dark-blue': hsl(230, 17%, 14%),
+  'toggle-dark': linear-gradient(hsl(210, 78%, 56%), hsl(146, 68%, 55%)),
+  'toggle-light': hsl(230, 22%, 74%),
+);
+
+:root{
+  @each $color, $value in $variables {
+    --#{$color}: #{$value};
+  }
+}
+
+*,
+*::before,
+*::after{
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+html{
+  box-sizing: border-box;
+}
+body{
+  font-family: $ff;
+  line-height: 1.6;
+  background: var(--white);
+  height: 100vh;
+  width: 100%;
+  font-size: 1rem;
+  color: var(--dark-desaturated-blue);
+  transition: background 0.25s ease-in-out, color 0.25s ease-in-out;
+
+  &.dark{
+    background: var(--dark-blue-bg);
+    color: var(--white);
+  }
+}
+
+.grid{
+  display: grid;
+  padding: 2rem;
+  margin: auto;
+  grid-template-columns: 1fr;
+  max-width: 1200px;
+}
+
+
+.header{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2.5rem;
+  
+  &__title{
+    font-size: 1.5rem;
+  }
+
+  &__followers{
+    color: var(--dark-graysh-blue);
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+
+  @media screen and (min-width: 700px){
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.toggle{
+  padding-top: 0.5rem;
+  margin-top: 0.5rem;
+  border-top: 2px solid var(--dark-graysh-blue);
+  display: flex;
+  justify-content: space-between;
+
+  @media screen and (min-width: 375px){
+    border-top: 0;
+  }
+  
+  &__label{
+    font-size: 0.85rem;
+    font-weight: 700;
+
+    @media screen and (min-width: 375px){
+      margin-right: 1rem;
+    }
+  }
+
+  &__btn{
+    width: 75px;
+    height: 25px;
+    border-radius: 30px;
+    background: #ccc;
+    position: relative;
+    cursor: pointer;
+
+    &::after{
+      content: '';
+      display: block;
+      position: absolute;
+      height: 20px;
+      width: 20px;
+      border-radius: 50%;
+      top: 50%;
+      left: 5%;
+      transform: translateY(-50%);
+      background: var(--white);
+      transition: left 0.25s ease;
+    }
+  }
+
+  &.active{
+
+    & .toggle__btn{
+      background: var(--toggle-dark);
+
+      &::after{
+        background: var(--dark-graysh-blue);
+        left: 70%;
+      }
+    }
+  }
+
+
+}
