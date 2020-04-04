@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 $ff: 'Inter', sans-serif;
-
+$gg: hsl(228, 26%, 27%);
 @mixin triangle($direction){
   @if ($direction == 'up') {
     border-left: 4px solid transparent;
@@ -34,7 +34,10 @@ $variables: (
   'dark-blue': hsl(230, 17%, 14%),
   'toggle-dark': linear-gradient(hsl(210, 78%, 56%), hsl(146, 68%, 55%)),
   'toggle-light': hsl(230, 22%, 74%),
+  'card-hover-light': hsl(232, 33%, 91%),
+  'card-hover-dark': hsl(228, 26%, 27%)
 );
+
 
 :root{
   @each $color, $value in $variables {
@@ -60,12 +63,6 @@ body{
   width: 100%;
   font-size: 1rem;
   color: var(--dark-blue);
-  transition: background 0.25s ease-in-out, color 0.25s ease-in-out;
-
-  &.dark{
-    background: var(--dark-blue-bg);
-    color: var(--white);
-  }
 }
 
 .grid{
@@ -170,6 +167,10 @@ margin: 1.5rem 0;
   align-items: center;
   font-weight: 700;
 
+  &:hover{
+    background: var(--card-hover-light);
+  }
+
   &__header{
     display: flex;
     align-items: center;
@@ -188,7 +189,6 @@ margin: 1.5rem 0;
 
     p:first-child{
       font-size: 3rem;
-      color: var(--dark-blue);
     }
     p:last-child{
       color: var(--dark-graysh-blue);
@@ -239,20 +239,27 @@ margin: 1.5rem 0;
 }
 
 .overview{
+  display: grid;
+
+  &__title{
+    grid-column: 1 / -1;
+  }
 
   .card{
     display: grid;
     grid-template-rows: repeat(2, 1fr);
     gap: 1rem 0;
 
+    &__img{
+      transform: scale(1.2);
+    }
+
     &__header,
     &__footer{
       justify-content: space-between;
-      color: var(--dark-blue);
     }
     &__header{
       font-size: 1rem;
-      color: var(--dark-graysh-blue);
     }
     &__footer{
       font-size: 2rem;
@@ -285,4 +292,30 @@ margin: 1.5rem 0;
   &::before{
     content: url('../images/icon-down.svg');
   }
+}
+
+
+
+body.dark{
+  background: var(--dark-blue-bg);
+  color: var(--white);
+
+  .toggle{
+    &__label{
+      color: var(--desaturated-blue);
+    }
+  }
+
+  .card{
+    background: var(--dark-desaturated-blue);
+
+    &:hover{
+      background: var(--card-hover-dark);
+    }  
+  }
+}
+
+body,
+.card{
+  transition: background 0.25s ease-in-out, color 0.25s ease-in-out;
 }
